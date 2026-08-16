@@ -18,6 +18,7 @@ import webbrowser
 import math
 import csv
 import flet as ft
+import io
 
 # Chart imports for Drainage Area Calculator with fallback across Flet versions
 try:
@@ -1713,34 +1714,46 @@ def main(page: ft.Page):
             page.update()
             return
         
-        save_path = await ft.FilePicker().save_file(
-            file_name="horizontal_alignment_elements.csv", allowed_extensions=["csv"]
-        )
-        if save_path:
-            try:
-                with open(save_path, mode='w', newline='') as f:
-                    writer = csv.writer(f)
-                    writer.writerow(["Element_Index", "Element_Type", "Start/PC_Sta", "PI_Sta", "PT_Sta", "PC_Northing", "PC_Easting", "PI_Northing", "PI_Easting", "PT_Northing", "PT_Easting", "Radius", "Delta", "Turn", "Back_Bearing", "Ahead_Bearing", "Length"])
-                    for elem in align_last_h_export_elements:
-                        if elem["type"] == "Linear":
-                            writer.writerow([
-                                elem["element_index"], "Linear", elem["start_sta"], "", elem["end_sta"],
-                                elem["pc_northing"], elem["pc_easting"], "", "", "", "",
-                                "", "", "", elem["bearing"], "", elem["length"]
-                            ])
-                        else:
-                            writer.writerow([
-                                elem["element_index"], "Circular", elem["pc_sta"], elem["pi_sta"], elem["pt_sta"],
-                                elem["pc_northing"], elem["pc_easting"], elem["pi_northing"], elem["pi_easting"], elem["pt_northing"], elem["pt_easting"],
-                                elem["radius"], elem["delta"], elem["turn"], elem["back_bearing"], elem["ahead_bearing"], elem["length"]
-                            ])
-                page.snack_bar = ft.SnackBar(ft.Text("Horizontal elements exported successfully!"), bgcolor="green")
-                page.snack_bar.open = True
-                page.update()
-            except Exception as ex:
-                page.snack_bar = ft.SnackBar(ft.Text(f"Export Error: {str(ex)}"), bgcolor="red")
-                page.snack_bar.open = True
-                page.update()
+        try:
+            # 1. Create a virtual text file in memory
+            buffer = io.StringIO()
+            writer = csv.writer(buffer)
+            writer.writerow(["Element_Index", "Element_Type", "Start/PC_Sta", "PI_Sta", "PT_Sta", "PC_Northing", "PC_Easting", "PI_Northing", "PI_Easting", "PT_Northing", "PT_Easting", "Radius", "Delta", "Turn", "Back_Bearing", "Ahead_Bearing", "Length"])
+            
+            for elem in align_last_h_export_elements:
+                if elem["type"] == "Linear":
+                    writer.writerow([
+                        elem["element_index"], "Linear", elem["start_sta"], "", elem["end_sta"],
+                        elem["pc_northing"], elem["pc_easting"], "", "", "", "",
+                        "", "", "", elem["bearing"], "", elem["length"]
+                    ])
+                else:
+                    writer.writerow([
+                        elem["element_index"], "Circular", elem["pc_sta"], elem["pi_sta"], elem["pt_sta"],
+                        elem["pc_northing"], elem["pc_easting"], elem["pi_northing"], elem["pi_easting"], elem["pt_northing"], elem["pt_easting"],
+                        elem["radius"], elem["delta"], elem["turn"], elem["back_bearing"], elem["ahead_bearing"], elem["length"]
+                    ])
+            
+            # 2. Convert the virtual text file into raw bytes
+            csv_bytes = buffer.getvalue().encode('utf-8')
+
+            # 3. Hand the bytes to Flet. Flet will automatically download it on the web, 
+            # or save it to the user's chosen folder on desktop.
+            await ft.FilePicker().save_file(
+                file_name="horizontal_alignment_elements.csv", 
+                allowed_extensions=["csv"],
+                src_bytes=csv_bytes
+            )
+
+            page.snack_bar = ft.SnackBar(ft.Text("Horizontal elements exported successfully!"), bgcolor="green")
+            page.snack_bar.open = True
+            page.update()
+
+        except Exception as ex:
+            page.snack_bar = ft.SnackBar(ft.Text(f"Export Error: {str(ex)}"), bgcolor="red")
+            page.snack_bar.open = True
+            page.update()
+
 
     async def align_export_v_csv(e):
         if not align_last_v_export_data:
@@ -1749,27 +1762,37 @@ def main(page: ft.Page):
             page.update()
             return
             
-        save_path = await ft.FilePicker().save_file(
-            file_name="vertical_profile_report.csv", allowed_extensions=["csv"]
-        )
-        if save_path:
-            try:
-                with open(save_path, mode='w', newline='') as f:
-                    writer = csv.DictWriter(f, fieldnames=["Station", "Elevation", "Point_Type"])
-                    writer.writeheader()
-                    for row in align_last_v_export_data:
-                        writer.writerow({
-                            "Station": row.get("Station"),
-                            "Elevation": row.get("Elevation"),
-                            "Point_Type": row.get("Point_Type")
-                        })
-                page.snack_bar = ft.SnackBar(ft.Text("Vertical profile CSV exported successfully!"), bgcolor="green")
-                page.snack_bar.open = True
-                page.update()
-            except Exception as ex:
-                page.snack_bar = ft.SnackBar(ft.Text(f"Export Error: {str(ex)}"), bgcolor="red")
-                page.snack_bar.open = True
-                page.update()
+        try:
+            # 1. Create a virtual text file in memory
+            buffer = io.StringIO()
+            writer = csv.DictWriter(buffer, fieldnames=["Station", "Elevation", "Point_Type"])
+            writer.writeheader()
+            
+            for row in align_last_v_export_data:
+                writer.writerow({
+                    "Station": row.get("Station"),
+                    "Elevation": row.get("Elevation"),
+                    "Point_Type": row.get("Point_Type")
+                })
+            
+            # 2. Convert the virtual text file into raw bytes
+            csv_bytes = buffer.getvalue().encode('utf-8')
+
+            # 3. Hand the bytes to Flet.
+            await ft.FilePicker().save_file(
+                file_name="vertical_profile_report.csv", 
+                allowed_extensions=["csv"],
+                src_bytes=csv_bytes
+            )
+
+            page.snack_bar = ft.SnackBar(ft.Text("Vertical profile CSV exported successfully!"), bgcolor="green")
+            page.snack_bar.open = True
+            page.update()
+
+        except Exception as ex:
+            page.snack_bar = ft.SnackBar(ft.Text(f"Export Error: {str(ex)}"), bgcolor="red")
+            page.snack_bar.open = True
+            page.update()
 
     align_btn_add_h = ft.Button(content=ft.Text("Add Horizontal PI"), on_click=align_add_h_row)
     align_btn_add_v = ft.Button(content=ft.Text("Add Vertical PVI"), on_click=align_add_v_row)
