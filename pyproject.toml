@@ -1,0 +1,9 @@
+[project]
+name = "dg_calculators"
+version = "1.0.0"
+description = "DG Calculators Web Application"
+
+dependencies = [
+    "flet==0.86.5", 
+]
+# Note: math and csv are built-in Python libraries and do not go here.
