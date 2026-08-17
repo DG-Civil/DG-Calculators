@@ -590,67 +590,58 @@ TXDOT_DRAINAGE_STANDARDS = [
         "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-MC1023-20.pdf"
     },
     {
-        "code": "XBC-3-20",
+        "code": "SCC-3 & 4",
         "category": "Cast-In-Place Box Culverts",
-        "title": "Cast-In-Place Box Culvert 3 ft Span Details",
-        "summary": "This standard specifies structural design and reinforcement details for single-barrel cast-in-place 3-foot span box culverts across variable fill heights. Minimum slab and wall thickness is standardized at 8 inches. Engineers must verify hydraulic capacity, flowline alignment, and concrete cover requirements. Connection details require standard haunch dimensions, construction joint waterstops, and dowel ties into wingwalls. End treatments must coordinate with standard headwall drawings. Designers should cross-reference CD-MC-3-23 for multi-box equivalents and CD-XBC-4-20 for larger single spans.",
-        "constraints": "Span: 3 ft | Min wall/slab thickness: 8\" | Single-barrel CIP design",
-        "file_name": "CD-XBC3-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-XBC3-20.pdf"
+        "title": "Cast-In-Place Box Culvert 3 ft & 4ft Span Details",
+        "summary": "This standard specifies structural design and reinforcement details for single-barrel cast-in-place 3-foot/4-foot span box culverts across variable fill heights. Minimum slab and wall thickness is standardized at 8 inches. Engineers must verify hydraulic capacity, flowline alignment, and concrete cover requirements. Connection details require standard haunch dimensions, construction joint waterstops, and dowel ties into wingwalls. End treatments must coordinate with standard headwall drawings. Designers should cross-reference CD-MC-3-23 for multi-box equivalents and CD-XBC-4-20 for larger single spans.",
+        "constraints": "Span: 4 ft | Min wall/slab thickness: 8\" | Single-barrel CIP design",
+        "file_name": "CD-SCC34-21.dgn",
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SCC34-21.pdf"
     },
     {
-        "code": "XBC-4-20",
+        "code": "SCC-5 & 6",
         "category": "Cast-In-Place Box Culverts",
-        "title": "Cast-In-Place Box Culvert 4 ft Span Details",
-        "summary": "This standard outlines structural drawings for single-barrel cast-in-place 4-foot span box culverts under highway embankments. Minimum structural concrete thickness is maintained at 8 inches for walls and slabs. Design engineers must check live load distribution, shear stresses, and subgrade preparation requirements. Connection details mandate keyed construction joints, hydrophilic waterstops, and reinforced haunches. Wingwalls and aprons must be detailed to prevent local scour. Engineers should review CD-XBC-3-20 and CD-XBC-5-20 standards for comparative sizing.",
-        "constraints": "Span: 4 ft | Min thickness: 8\" | Subgrade preparation and haunch detailing",
-        "file_name": "CD-XBC4-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-XBC4-20.pdf"
+        "title": "Cast-In-Place Box Culvert 5 ft & 6 ft Span Details",
+        "summary": "This standard outlines structural drawings for single-barrel cast-in-place 5-foot/6 foot span box culverts under highway embankments. Minimum structural concrete thickness is maintained at 8 inches for walls and slabs. Design engineers must check live load distribution, shear stresses, and subgrade preparation requirements. Connection details mandate keyed construction joints, hydrophilic waterstops, and reinforced haunches. Wingwalls and aprons must be detailed to prevent local scour. Engineers should review CD-XBC-3-20 and CD-XBC-5-20 standards for comparative sizing.",
+        "constraints": "Span: 6 ft | Min thickness: 8\" | Subgrade preparation and haunch detailing",
+        "file_name": "CD-SCC56-2.dgn",
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SCC56-2.pdf"
     },
     {
-        "code": "XBC-5-20",
-        "category": "Cast-In-Place Box Culverts",
-        "title": "Cast-In-Place Box Culvert 5 ft Span Details",
-        "summary": "This standard provides structural details for single-barrel cast-in-place 5-foot span box culverts across various fill heights up to 20 feet. Structural concrete thickness is specified at a minimum of 8 inches to 9 inches. Engineers must evaluate bending moments, lateral earth pressures, and crack control reinforcement schedules. Connection details specify monolithic haunches, dowelled construction joints, and waterstops. End treatments require standard wingwall connections. Designers should cross-reference CD-XBC-4-20 and CD-XBC-6-20 standards.",
-        "constraints": "Span: 5 ft | Fill: Up to 20 ft | Min thickness: 8\" to 9\" | Moment and earth pressure checks",
-        "file_name": "CD-XBC5-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-XBC5-20.pdf"
-    },
-    {
-        "code": "XBC-6-20",
-        "category": "Cast-In-Place Box Culverts",
-        "title": "Cast-In-Place Box Culvert 6 ft Span Details",
-        "summary": "This standard outlines structural configurations for single-barrel cast-in-place 6-foot span box culvert installations. Minimum structural thickness for top slabs, bottom slabs, and walls is established at 8.5 inches. Design engineers must verify hydraulic capacity, flow velocities, and HL-93 live load impacts under shallow covers. Connection details require continuous internal haunches, keyed joints, and waterstops. Wingwall and apron designs must ensure smooth hydraulic transitions. Engineers should review CD-XBC-5-20 and CD-XBC-7-20 standards.",
-        "constraints": "Span: 6 ft | Min thickness: 8.5\" | HL-93 live load and shallow cover checks",
-        "file_name": "CD-XBC6-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-XBC6-20.pdf"
-    },
-    {
-        "code": "XBC-7-20",
+        "code": "SCC-7-21",
         "category": "Cast-In-Place Box Culverts",
         "title": "Cast-In-Place Box Culvert 7 ft Span Details",
         "summary": "This standard provides engineering details for single-barrel cast-in-place 7-foot span box culverts supporting roadway embankments. Structural concrete thickness is maintained at a minimum of 9 inches. Engineers must evaluate dead load earth pressures, moment distributions, and foundation bearing capacities. Connection details mandate robust dowelled joints, shear keys, and hydrophilic waterstops. End treatments require heavily reinforced wingwalls. Designers should cross-reference CD-XBC-6-20 and CD-XBC-8-20 standards.",
-        "constraints": "Span: 7 ft | Min thickness: 9\" | Foundation bearing and moment distribution",
-        "file_name": "CD-XBC7-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-XBC7-20.pdf"
+        "constraints": "Span: 7 ft | Fill: Up to 20 ft | Min thickness: 8\" to 9\" | Moment and earth pressure checks",
+        "file_name": "CD-SCC07-21.dgn",
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SCC07-21.pdf"
     },
     {
-        "code": "XBC-8-20",
+        "code": "SCC-8-21",
         "category": "Cast-In-Place Box Culverts",
         "title": "Cast-In-Place Box Culvert 8 ft Span Details",
         "summary": "This standard details structural sizing and reinforcement schedules for single-barrel cast-in-place 8-foot span box culverts. Minimum slab and wall thickness is specified at 9.5 inches of reinforced concrete. Design engineers must check span deflections, crack control criteria, and heavy earth load distributions. Connection details specify continuous haunches, keyed joints, and waterstop integration. Wingwall connections must be engineered for lateral soil thrust. Engineers should review CD-XBC-7-20 and CD-XBC-10-20 standards.",
-        "constraints": "Span: 8 ft | Min thickness: 9.5\" | Span deflection and crack control checks",
-        "file_name": "CD-XBC8-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-XBC8-20.pdf"
+        "constraints": "Span: 8 ft | Min thickness: 8.5\" | HL-93 live load and shallow cover checks",
+        "file_name": "CD-SCC08-21.dgn",
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SCC08-21.pdf"
     },
     {
-        "code": "XBC-10-20",
+        "code": "SCC-9-21",
+        "category": "Cast-In-Place Box Culverts",
+        "title": "Cast-In-Place Box Culvert 9 ft Span Details",
+        "summary": "This standard details structural sizing and reinforcement schedules for single-barrel cast-in-place 9-foot span box culverts. Minimum slab and wall thickness is specified at 9.5 inches of reinforced concrete. Design engineers must check span deflections, crack control criteria, and heavy earth load distributions. Connection details specify continuous haunches, keyed joints, and waterstop integration. Wingwall connections must be engineered for lateral soil thrust. Engineers should review CD-XBC-7-20 and CD-XBC-10-20 standards.",
+        "constraints": "Span: 9 ft | Min thickness: 8.5\" | HL-93 live load and shallow cover checks",
+        "file_name": "CD-SCC09-21.dgn",
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SCC09-21.pdf"
+    },
+    {
+        "code": "SCC-10-21",
         "category": "Cast-In-Place Box Culverts",
         "title": "Cast-In-Place Box Culvert 10 ft Span Details",
         "summary": "This standard outlines structural design requirements for large single-barrel cast-in-place 10-foot span box culverts. Minimum structural thickness for top slabs, bottom slabs, and walls is established at 10 inches. Engineers must evaluate large span bending moments, shear reinforcement, and settlement tolerances. Connection details require heavy dowel reinforcement, shear keys, and waterstops. End treatments require robust headwalls and wingwalls. Designers should cross-reference CD-XBC-8-20 and CD-MC-10 series multi-box standards.",
         "constraints": "Span: 10 ft | Min thickness: 10\" | Large span bending and shear reinforcement",
-        "file_name": "CD-XBC10-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-XBC10-20.pdf"
+        "file_name": "CD-SCC10-21.dgn",
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SCC10-21.pdf"
     },
     {
         "code": "CH-FW-0",
@@ -751,294 +742,6 @@ TXDOT_DRAINAGE_STANDARDS = [
         "file_name": "CD-BCS-20.dgn",
         "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-BCS-20.pdf"
     },
-    {
-        "code": "BCU-20",
-        "category": "Box Culverts",
-        "title": "Box Culvert Universal Connection Details",
-        "summary": "This standard outlines universal connection details for joining precast and cast-in-place box culvert sections across various infrastructure projects. Minimum concrete collar and keyway thickness is specified at 6 inches to 8 inches. Engineers must examine differential settlement potential, joint shear transfer, and watertightness requirements. Connection details require continuous rubber gaskets, mastic sealants, and external reinforced concrete collar pours where specified. End treatments and joint alignment must be rigorously inspected. Designers should review all CD-BC and CD-MC standards.",
-        "constraints": "Universal box connection | Min collar thickness: 6\" to 8\" | Watertight joint design",
-        "file_name": "CD-BCU-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-BCU-20.pdf"
-    },
-    {
-        "code": "SCD-20",
-        "category": "Storm Sewer",
-        "title": "Storm Sewer Cleanout Details",
-        "summary": "This standard details structural and access specifications for storm sewer cleanout structures placed along long trunk lines. Minimum precast or cast-in-place wall and slab thickness is 6 inches. Design engineers must verify cleanout spacing, hydraulic access requirements, and traffic-rated cover specifications under roadway shoulders. Connection details require resilient pipe boot penetrations, non-shrink grout collars, and watertight manhole frame connections. Outlets connect directly to storm mains. Engineers should cross-reference CD-PRM-23 and CD-PJB-20 standards.",
-        "constraints": "Cleanout structure | Min wall thickness: 6\" | Traffic-rated access cover",
-        "file_name": "CD-SCD-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SCD-20.pdf"
-    },
-    {
-        "code": "SJB-20",
-        "category": "Storm Sewer",
-        "title": "Storm Sewer Junction Box Details",
-        "summary": "This standard provides comprehensive structural details for storm sewer junction boxes used to connect multiple incoming pipes. Minimum structural wall and base slab thickness is 8 inches of reinforced concrete. Engineers must calculate internal flow mixing, turbulence losses, benching configurations, and buoyant uplift forces in high groundwater tables. Connection details mandate resilient rubber boot connectors, core-drilled penetrations, and waterstopped construction joints. Access hatches or slab lids must meet AASHTO load ratings. Designers should review CD-PJB-20 and CD-PRM-23 standards.",
-        "constraints": "Junction box | Min thickness: 8\" | Benching and buoyant uplift checks",
-        "file_name": "CD-SJB-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SJB-20.pdf"
-    },
-
-    {
-        "code": "CD-RIP-20",
-        "category": "Riprap & Slope Protection",
-        "title": "Riprap Slope Protection Details",
-        "summary": "This standard details comprehensive rock and concrete riprap slope protection configurations for culvert inlets, outlets, and bridge cones. Minimum riprap blanket thickness is specified at 12 inches placed over approved geotextile filter fabric. Design engineers must calculate peak shear stresses, maximum flow velocities, and toe wall embedment depths to prevent scour undermining. Connection details require positive toe trench embedment into stable subgrade soils and grouted articulation where high turbulence occurs. Transition grading must ensure smooth flow exits without creating eddy currents. Engineers should cross-reference CD-PSET-RR-20 and standard channel lining drawings.",
-        "constraints": "Riprap thickness: 12\" min | Geotextile filter fabric | Toe trench embedment",
-        "file_name": "CD-RIP-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-RIP-20.pdf"
-    },
-    {
-        "code": "CD-RIP-CON-20",
-        "category": "Riprap & Slope Protection",
-        "title": "Concrete Riprap Details",
-        "summary": "This standard outlines structural concrete riprap slab placement and articulation details for channel banks and embankment erosion control. Minimum concrete thickness is established at 6 inches reinforced with welded wire fabric. Engineers must review subgrade compaction, weep hole spacing for hydrostatic pressure relief, and perimeter cutoff wall depths. Connection details require construction joints with joint sealant and positive anchoring dowels into underlying soils. Surface finishes must promote uniform sheet flow drainage. Designers should review CD-RIP-20 and CD-RIP-STN-20 standards.",
-        "constraints": "Concrete thickness: 6\" min | Weep hole spacing | Perimeter cutoff walls",
-        "file_name": "CD-RIP-CON-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-RIP-CON-20.pdf"
-    },
-    {
-        "code": "CD-RIP-STN-20",
-        "category": "Riprap & Slope Protection",
-        "title": "Stone Riprap Details",
-        "summary": "This standard provides grading, sizing, and placement specifications for stone riprap and grouted stone slope protection. Stone sizing conforms to TxDOT gradation requirements ranging from 6-inch to 24-inch nominal stone diameters based on hydraulic shear stress. Design engineers must verify angular stone quality, specific gravity, and blanket thickness requirements. Connection details mandate multi-layer filter bedding materials or non-woven geotextile underlayment to prevent fine soil migration. Toe protection trenches must be excavated to stable strata. Engineers should cross-reference CD-RIP-20 and CD-RIP-CON-20.",
-        "constraints": "Stone sizing: 6\" to 24\" dia | Geotextile or granular filter underlayment",
-        "file_name": "CD-RIP-STN-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-RIP-STN-20.pdf"
-    },
-    {
-        "code": "CD-UD-20",
-        "category": "Underdrains",
-        "title": "Underdrain Pipe and Trench Details",
-        "summary": "This standard details subsurface drainage underdrain trench configurations, perforated pipe placement, and permeable aggregate backfill materials. Minimum trench depth is established at 24 inches below subgrade or flowline elevations. Engineers must calculate groundwater drawdown rates, infiltration capacity, and leachate collection efficiency. Connection details require filter sock wrapping on perforated pipes, non-woven geotextile trench liners, and cleanout riser placements at grade changes. Outlets must discharge into standard drainage structures. Designers should review CD-UD-PVC-20 and roadway subbase drainage standards.",
-        "constraints": "Min trench depth: 24\" | Perforated pipe filter sock | Geotextile trench liner",
-        "file_name": "CD-UD-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-UD-20.pdf"
-    },
-    {
-        "code": "CD-UD-PVC-20",
-        "category": "Underdrains",
-        "title": "PVC Underdrain Pipe Installation",
-        "summary": "This standard specifies structural installation requirements, joint coupling methods, and bedding standards for PVC underdrain piping systems. Pipe stiffness and wall thickness comply with AASHTO specifications for subsurface drainage collection. Design engineers must examine trench load transfer, backfill compaction levels, and perforation orientation parameters. Connection details mandate snap-together or solvent-welded fittings, rodent guards at outfalls, and secure connections into junction boxes or headwalls. Maintenance access points must be provided. Engineers should cross-reference CD-UD-20 standards.",
-        "constraints": "PVC underdrain pipe | Perforation orientation | Rodent guards at outfalls",
-        "file_name": "CD-UD-PVC-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-UD-PVC-20.pdf"
-    },
-    {
-        "code": "CD-PRE-20",
-        "category": "Energy Dissipators",
-        "title": "Preformed Scour Hole Details",
-        "summary": "This standard outlines geometric sizing and construction details for preformed scour holes placed at high-velocity culvert outfalls. Minimum excavation depth and riprap lining thickness conform to discharge energy dissipation formulas. Engineers must evaluate tailwater depths, jet diffusion characteristics, and downstream channel stability. Connection details require transition aprons tying the scour hole directly into natural or artificial channel sections with geotextile backing. Cutoff walls must enclose the perimeter. Designers should review CD-RIP-20 and CD-BAM-20 standards.",
-        "constraints": "Scour hole excavation and riprap lining | Tailwater depth evaluation",
-        "file_name": "CD-PRE-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-PRE-20.pdf"
-    },
-    {
-        "code": "CD-EC-20",
-        "category": "Erosion Control",
-        "title": "Erosion Control Drainage Transition Details",
-        "summary": "This standard provides engineering details for temporary and permanent erosion control transition measures at drainage outfalls and slope interfaces. Minimum thickness for turf reinforcement mats and concrete block mats is specified by manufacturer and hydraulic loading. Design engineers must verify shear resistance, anchoring pin spacing, and overlap requirements. Connection details require trenching and anchoring mat edges into soil banks, along with sod or seeding integration. Outfall aprons must prevent localized gullying. Engineers should cross-reference all CD-RIP and CD-PSET standards.",
-        "constraints": "Turf reinforcement matting | Anchor pin spacing | Edge trenching requirements",
-        "file_name": "CD-EC-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-EC-20.pdf"
-    },
-    {
-        "code": "CD-MB-20",
-        "category": "Median Barrier Drainage",
-        "title": "Median Barrier Drainage Openings",
-        "summary": "This standard details cast-in-place and precast drainage weep holes and transverse slot openings integrated into highway median barrier shapes. Minimum opening dimensions and clear spacing are engineered to intercept median runoff without compromising barrier structural crashworthiness. Engineers must calculate sheet flow interception capacity and blockage potential from debris. Connection details require internal drainage channels routing water down into precast median barrier drains or subsurface trunk lines. Reinforcement around openings must be maintained. Designers should review CD-PMBD-20 and CD-MB-DT-20.",
-        "constraints": "Barrier drainage slots | Structural reinforcement around openings",
-        "file_name": "CD-MB-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-MB-20.pdf"
-    },
-    {
-        "code": "CD-MB-DT-20",
-        "category": "Median Barrier Drainage",
-        "title": "Median Barrier Drainage Transition Details",
-        "summary": "This standard outlines transition grading and structural connection details where median barrier drainage systems interface with standard storm sewer inlets. Minimum concrete apron thickness is 6 inches. Design engineers must review flowline transitions, drop inlet box connections, and smooth profile alignments to prevent ponding in travel lanes. Connection details mandate dowelled construction joints and watertight seals between barrier drainage troughs and inlet chambers. Outlets must tie securely into mainline networks. Engineers should cross-reference CD-MB-20 and CD-PMBD-20.",
-        "constraints": "Transition thickness: 6\" min | Inlet box connection details",
-        "file_name": "CD-MB-DT-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-MB-DT-20.pdf"
-    },
-    {
-        "code": "CD-SIG-FD-20",
-        "category": "Special Structures",
-        "title": "Sign Bridge Foundation Drainage Details",
-        "summary": "This standard details internal conduit and drainage routing provisions for large overhead sign bridge and traffic signal concrete shaft foundations. Minimum concrete cover over drainage conduits is 3 inches. Engineers must evaluate shaft excavation stability, reinforcing cage clearance, and conduit sweep radii to prevent cable binding. Connection details require waterproof conduit seals, rigid PVC or galvanized steel sweep elbows, and stub-ups into sign structure base plates. Foundation drainage must prevent internal water accumulation. Designers should review standard sign structure drawings.",
-        "constraints": "Conduit concrete cover: 3\" min | Waterproof seals and sweep elbows",
-        "file_name": "CD-SIG-FD-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SIG-FD-20.pdf"
-    },
-    {
-        "code": "CD-RET-WALL-DR-20",
-        "category": "Retaining Walls",
-        "title": "Retaining Wall Drainage Details",
-        "summary": "This standard specifies comprehensive drainage provisions for highway retaining walls, including geocomposite drainage mats and collector pipes. Minimum collector pipe diameter is 4 inches wrapped in filter fabric. Design engineers must calculate behind-wall hydrostatic pressures, seepage rates, and weep hole discharge requirements. Connection details mandate continuous collector pipe runs, cleanout risers at wall ends, and gravity outfalls through the wall stem or barrier footing. Waterproofing membranes must be detailed. Engineers should cross-reference CD-RET-WEEP-20 and CD-MSE-DR-20.",
-        "constraints": "Collector pipe: 4\" min diameter | Geocomposite drainage mat backing",
-        "file_name": "CD-RET-WALL-DR-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-RET-WALL-DR-20.pdf"
-    },
-    {
-        "code": "CD-RET-WEEP-20",
-        "category": "Retaining Walls",
-        "title": "Retaining Wall Weep Hole Details",
-        "summary": "This standard details weep hole size, spacing, and gravel pocket filter requirements through cast-in-place retaining wall stems. Minimum weep hole diameter is 3 inches spaced at regular horizontal intervals near the finish grade line. Engineers must verify backfill drainage aggregate gradation around weep hole inlets to prevent soil piping and clogging. Connection details require non-woven geotextile wrapping over intake stone pockets and clear gravity discharge outlets above toe slabs. Wall structural integrity around openings must be checked. Designers should review CD-RET-WALL-DR-20.",
-        "constraints": "Weep hole diameter: 3\" min | Gravel filter pocket with geotextile wrap",
-        "file_name": "CD-RET-WEEP-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-RET-WEEP-20.pdf"
-    },
-    {
-        "code": "CD-SOE-20",
-        "category": "Retaining Walls",
-        "title": "Soil Nail Wall Drainage Details",
-        "summary": "This standard outlines subsurface drainage collection details for temporary and permanent soil nail retaining walls. Minimum geocomposite drain strip width is 12 inches placed vertically between soil nails. Design engineers must examine face panel drainage integration, collector pipe sizing at wall bases, and hydrostatic pressure elimination. Connection details require perforated collector pipes embedded in reinforced concrete leveling pads, tied into standard storm sewer inlets. Shotcrete facing details must accommodate drainage strips. Engineers should cross-reference CD-RET-WALL-DR-20.",
-        "constraints": "Drain strip width: 12\" min | Leveling pad collector pipe integration",
-        "file_name": "CD-SOE-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SOE-20.pdf"
-    },
-    {
-        "code": "CD-MSE-DR-20",
-        "category": "Retaining Walls",
-        "title": "MSE Wall Drainage and Outlet Details",
-        "summary": "This standard specifies drainage collection and outlet requirements for Mechanically Stabilized Earth (MSE) retaining wall backfill zones. Minimum granular drainage blanket thickness is 12 inches behind wall panels. Engineers must evaluate select granular backfill permeability, rainwater infiltration, and potential perched water tables. Connection details mandate collector pipes placed at the base of the reinforced soil mass, connected to solid outfall pipes passing through wall panels or concrete copings at positive drainage gradients. Designers should review CD-RET-WALL-DR-20 standards.",
-        "constraints": "Granular drainage blanket: 12\" min | Collector pipe within reinforced mass",
-        "file_name": "CD-MSE-DR-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-MSE-DR-20.pdf"
-    },
-    {
-        "code": "CD-LET-20",
-        "category": "Energy Dissipators",
-        "title": "Low Flow Energy Dissipator Details",
-        "summary": "This standard details concrete baffle blocks and sill structures designed to dissipate kinetic energy in high-velocity storm sewer discharge channels. Minimum structural baffle wall thickness is 8 inches. Design engineers must calculate Froude numbers, critical flow depths, and impact forces on baffle walls. Connection details require heavy dowelled footings anchored into concrete channel invert slabs, along with smooth transition wingwalls. Riprap protection must be detailed downstream of the dissipator sill. Engineers should cross-reference CD-PRE-20 and CD-BAM-20.",
-        "constraints": "Baffle wall thickness: 8\" min | Froude number and impact force checks",
-        "file_name": "CD-LET-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-LET-20.pdf"
-    },
-    {
-        "code": "CD-BAM-20",
-        "category": "Energy Dissipators",
-        "title": "Baffle Chute and Energy Dissipator",
-        "summary": "This standard outlines structural design configurations for stepped baffle chutes utilized on steep slope drainage drops. Minimum concrete thickness for chute slabs and baffle steps is 10 inches. Engineers must evaluate severe hydraulic impact forces, cavitation potential, and sliding stability on steep slopes. Connection details mandate continuous anchor trenches, heavy reinforcing steel schedules, and weep holes to relieve uplift pressures. End aprons require energy dissipation pools. Designers should review CD-LET-20 and CD-PRE-20 standards.",
-        "constraints": "Chute slab thickness: 10\" min | Uplift pressure relief weep holes",
-        "file_name": "CD-BAM-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-BAM-20.pdf"
-    },
-    {
-        "code": "CD-WTR-STP-20",
-        "category": "Joints & Sealing",
-        "title": "Waterstop Installation Details",
-        "summary": "This standard specifies material specifications, sizing, and placement procedures for PVC and hydrophilic waterstops in concrete structure construction joints. Minimum dumbbell or center-bulb waterstop width is 6 inches. Design engineers must verify joint movement ranges, concrete consolidation around waterstop bulbs, and split-form placement requirements. Connection details require heat-welded field splices for PVC waterstops or continuous primer-bonded adhesive applications for hydrophilic strips. Inspection protocols must ensure zero voids. Engineers should review all box culvert and junction box standards.",
-        "constraints": "Waterstop width: 6\" min | Heat-welded field splices or adhesive bonding",
-        "file_name": "CD-WTR-STP-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-WTR-STP-20.pdf"
-    },
-    {
-        "code": "CD-JOINT-DT-20",
-        "category": "Joints & Sealing",
-        "title": "Culvert Expansion and Contraction Joint Details",
-        "summary": "This standard details expansion, contraction, and isolation joint configurations for cast-in-place box culverts and long headwall structures. Minimum joint filler thickness is 0.5 inches of preformed expansion joint material. Engineers must calculate thermal expansion coefficients, anticipated joint movement, and sealant recess dimensions. Connection details mandate joint sealants, backer rods, continuous waterstops, and smooth dowel assemblies with expansion caps where required. Designers should cross-reference CD-WTR-STP-20 and CD-MC-MD-20.",
-        "constraints": "Joint filler thickness: 0.5\" min | Sealant recess and backer rod details",
-        "file_name": "CD-JOINT-DT-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-JOINT-DT-20.pdf"
-    },
-    {
-        "code": "CD-GUT-IN-20",
-        "category": "Inlets & Drains",
-        "title": "Gutter Inlet Interception and Depression Details",
-        "summary": "This standard provides geometric grading and pavement depression details to maximize gutter inlet interception efficiency along roadways. Minimum gutter depression depth is 2 inches below normal cross-slope profile. Design engineers must calculate bypass flows, spread limits in travel lanes, and frontal versus side interception ratios. Connection details require smooth asphalt or concrete transition aprons tied directly into standard curb inlet throats. Surface drainage continuity must be maintained. Engineers should cross-reference CD-PCU-23 and CD-PCO-23.",
-        "constraints": "Gutter depression depth: 2\" min | Pavement spread and interception checks",
-        "file_name": "CD-GUT-IN-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-GUT-IN-20.pdf"
-    },
-    {
-        "code": "CD-DROP-IN-20",
-        "category": "Inlets & Drains",
-        "title": "Drop Inlet Standard Details",
-        "summary": "This standard outlines precast and cast-in-place drop inlet structural details for median and ditch collection points. Minimum wall and slab thickness is 6 inches. Engineers must evaluate grate open area ratios, debris loading capacity, and local depression grading. Connection details specify resilient pipe boot connections, non-shrink grout seals, and heavy-duty traffic or pedestrian-rated grates bolted to frames. Outlets connect to downstream storm mains. Designers should review CD-PAZD-20 and CD-SJB-20.",
-        "constraints": "Wall/Slab thickness: 6\" min | Grate open area ratio and frame bolting",
-        "file_name": "CD-DROP-IN-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-DROP-IN-20.pdf"
-    },
-    {
-        "code": "CD-YARD-DR-20",
-        "category": "Inlets & Drains",
-        "title": "Yard Drainage Inlet Details",
-        "summary": "This standard details lightweight precast and plastic catch basin units utilized for residential or commercial yard drainage outside paved roadways. Minimum structural wall thickness is 4 inches. Design engineers must verify shallow burial cover limits, inlet capacity, and turf grade integration. Connection details require snap-in or solvent-welded pipe connections for corrugated polyethylene or PVC drain pipes. Grate locking mechanisms must prevent vandalism. Engineers should cross-reference CD-PAZD-20 standards.",
-        "constraints": "Wall thickness: 4\" min | Shallow burial cover limits | Snap-in pipe connections",
-        "file_name": "CD-YARD-DR-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-YARD-DR-20.pdf"
-    },
-    {
-        "code": "CD-FLAP-GAT-20",
-        "category": "Gates & Appurtenances",
-        "title": "Flap Gate Installation Details",
-        "summary": "This standard specifies mounting hardware, frame details, and structural attachment requirements for cast iron and fiberglass flood control flap gates. Minimum mounting flange thickness is 0.5 inches. Engineers must evaluate backflow prevention requirements, tidal or river water heads, and opening torque pressures. Connection details mandate stainless steel anchor bolts embedded in concrete headwalls, neoprene sealing gaskets, and hinge pivot lubrication provisions. Outfall alignments must be checked. Designers should review CD-SLUICE-20 and headwall standards.",
-        "constraints": "Flange thickness: 0.5\" min | Stainless steel anchor bolts | Neoprene gaskets",
-        "file_name": "CD-FLAP-GAT-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-FLAP-GAT-20.pdf"
-    },
-    {
-        "code": "CD-SLUICE-20",
-        "category": "Gates & Appurtenances",
-        "title": "Sluice Gate Mounting Details",
-        "summary": "This standard outlines structural mounting and stem extension details for manual and motorized sluice gates on concrete headwalls and manholes. Minimum wall thickness around gate frames is 10 inches of reinforced concrete. Design engineers must calculate seating and unseating hydraulic heads, operating loads, and stem guide spacing. Connection details require heavy mounting thimbles cast directly into concrete walls, non-shrink epoxy grout, and stainless steel fasteners. Operating platforms must be detailed. Engineers should cross-reference CD-FLAP-GAT-20.",
-        "constraints": "Wall thickness: 10\" min | Seating/unseating head check | Mounting thimble embedment",
-        "file_name": "CD-SLUICE-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-SLUICE-20.pdf"
-    },
-    {
-        "code": "CD-TRASH-RACK-20",
-        "category": "Safety & Security",
-        "title": "Trash Rack and Safety Screen Details",
-        "summary": "This standard provides structural fabrication and installation details for protective trash racks and safety grilles on large culvert inlets. Minimum structural steel bar size is 0.75-inch diameter or equivalent flat bar stock. Engineers must evaluate clogging risks, hydraulic headloss increases across racks, and structural impact resistance against floating debris. Connection details specify cast-in-place anchor inserts, removable bolted frame sections for maintenance access, and hot-dip galvanized corrosion protection coatings. Designers should review all safety end treatment standards.",
-        "constraints": "Steel bar stock: 0.75\" min | Removable bolted frame sections | Hot-dip galvanized",
-        "file_name": "CD-TRASH-RACK-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-TRASH-RACK-20.pdf"
-    },
-    {
-        "code": "CD-TRENCH-DR-20",
-        "category": "Inlets & Drains",
-        "title": "Trench Drain System Details",
-        "summary": "This standard details structural channel, grating, and anchoring specifications for precast polymer concrete and metallic trench drain systems across paved areas. Minimum channel wall thickness is 0.5 inches. Design engineers must calculate surface runoff collection rates, dynamic wheel load ratings (AASHTO HL-93), and outfall spacing. Connection details require concrete encasement cradles, mechanical interlocking channel joints, and sealed bottom outlet connections. Grates must be bolt-secured. Engineers should cross-reference CD-SD-20 standards.",
-        "constraints": "Channel wall thickness: 0.5\" min | HL-93 load rating | Concrete encasement cradle",
-        "file_name": "CD-TRENCH-DR-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-TRENCH-DR-20.pdf"
-    },
-    {
-        "code": "CD-BRIDGE-APP-20",
-        "category": "Bridge Drainage",
-        "title": "Bridge Approach Slab Drainage Details",
-        "summary": "This standard outlines sub-slab drainage collection troughs and sleeper slab drainage details adjacent to bridge approach slabs. Minimum drainage trough concrete thickness is 8 inches. Engineers must examine surface runoff interception before the approach slab, joint sealing between pavement and bridge decks, and subbase filtration. Connection details mandate slotted collector pipes, geosynthetic filter layers, and direct outfalls into bridge end drainage structures. Designers should review standard bridge approach drawings.",
-        "constraints": "Drainage trough thickness: 8\" min | Sub-slab collector pipe and filter layers",
-        "file_name": "CD-BRIDGE-APP-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-BRIDGE-APP-20.pdf"
-    },
-    {
-        "code": "CD-CONST-EX-20",
-        "category": "Construction Drainage",
-        "title": "Construction Exit Drainage Details",
-        "summary": "This standard details temporary stabilized construction exits and associated sediment drainage swales for active highway construction sites. Minimum aggregate pad thickness is 6 inches of coarse stone over geotextile fabric. Design engineers must verify runoff detention, sediment trapping efficiency, and wheel-wash drainage routing. Connection details require temporary silt fences, rock berms, and temporary pipe culverts sized for storm recurrence intervals during construction phases. Engineers should cross-reference TxDOT stormwater pollution prevention plan (SWP3) standards.",
-        "constraints": "Aggregate pad thickness: 6\" min | Temporary sediment swales and silt fences",
-        "file_name": "CD-CONST-EX-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CONST-EX-20.pdf"
-    },
-    {
-        "code": "CD-DETOUR-DR-20",
-        "category": "Construction Drainage",
-        "title": "Temporary Detour Drainage Culvert Details",
-        "summary": "This standard provides hydraulic sizing, bedding, and temporary pipe cover specifications for traffic detour culverts during phased highway construction. Minimum pipe cover complies with flexible or rigid pipe temporary loading limits. Design engineers must calculate temporary hydrology return periods, diversion channel capacity, and headwater limits. Connection details mandate temporal corrugated metal or thermoplastic pipe joints, sandbag energy dissipators, and temporary headwalls. Removal and site restoration details must be included. Designers should review all CD-TPI and CD-GSES standards.",
-        "constraints": "Temporary pipe cover limits | Diversion channel and sandbag dissipators",
-        "file_name": "CD-DETOUR-DR-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-DETOUR-DR-20.pdf"
-    },
-    {
-        "code": "CD-MASTER-REV-20",
-        "category": "Master Index",
-        "title": "Drainage Master Revision and Index Details",
-        "summary": "This master reference standard provides the complete comprehensive index, revision history, and drafting specifications for all TxDOT culvert and drainage standard drawings. Minimum document control standards require strict adherence to CADD layering and sheet numbering conventions. Design engineers must cross-reference this master index to verify current standard publication dates and applicable specification items. Connection details establish the hierarchical framework linking bridge rails, inlets, pipe installations, and headwalls. Engineers should consult this sheet for overall project quality assurance.",
-        "constraints": "Master CADD index | Specification verification | Revision history tracking",
-        "file_name": "CD-MASTER-REV-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-MASTER-REV-20.pdf"
-    }
+    
 ]
 
