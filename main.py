@@ -56,12 +56,13 @@ except ImportError:
         }
     ]
 
-def open_pdf_in_system_viewer(path: str):
+def open_pdf_in_system_viewer(path: str,  page: ft.Page):
     if not path:
         return False, "No valid path provided."
     try:
         if path.startswith("http://") or path.startswith("https://"):
-            webbrowser.open(path, new=2)
+            #webbrowser.open(path, new=2)
+            page.launch_url(path)
             return True, "Opening standard PDF in default browser..."
 
         if not os.path.exists(path):
@@ -1969,7 +1970,7 @@ def main(page: ft.Page):
     def on_open_pdf_clicked(e):
         pdf_path = e.control.data
         if pdf_path:
-            success, msg = open_pdf_in_system_viewer(pdf_path)
+            success, msg = open_pdf_in_system_viewer(pdf_path, e.page)
             status_text.value = msg
             status_text.color = ft.Colors.GREEN_700 if success else ft.Colors.RED_700
             status_text.update()
