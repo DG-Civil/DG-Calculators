@@ -1321,13 +1321,21 @@ def main(page: ft.Page):
     # ==========================================
     # CALCULATOR 7: PIPES & DITCHES ANALYSIS
     # ==========================================
+
+    # ==========================================
+    # CALCULATOR 7: PIPES & DITCHES ANALYSIS
+    # ==========================================
     def get_flow_type(v, dm):
-        if dm <= 0: return "Unknown"
+        if dm <= 0:
+            return "Unknown"
         g = 32.2
         fr = v / math.sqrt(g * dm)
-        if fr < 0.95: return f"Subcritical (Fr = {fr:.2f})"
-        elif fr > 1.05: return f"Supercritical (Fr = {fr:.2f})"
-        else: return f"Critical (Fr = {fr:.2f})"
+        if fr < 0.95:
+            return f"Subcritical (Fr = {fr:.2f})"
+        elif fr > 1.05:
+            return f"Supercritical (Fr = {fr:.2f})"
+        else:
+            return f"Critical (Fr = {fr:.2f})"
 
     OptionClass = getattr(ft, "Option", getattr(ft.dropdown, "Option", None))
 
@@ -1336,6 +1344,7 @@ def main(page: ft.Page):
     d_z_left = ft.TextField(label="Left Side Slope [H:1V]", value="3.0", width=210, text_size=13)
     d_z_right = ft.TextField(label="Right Side Slope [H:1V]", value="3.0", width=210, text_size=13)
     d_b = ft.TextField(label="Bottom Width (b) [ft] (Trapezoidal Only)", value="2.0", width=280, disabled=True, text_size=13)
+    
     d_y = ft.TextField(label="Normal Depth (y) [ft]", value="1.5", width=220, disabled=False, text_size=13)
     d_q = ft.TextField(label="Discharge (Q) [cfs]", value="25.0", width=220, disabled=True, text_size=13)
 
@@ -1353,15 +1362,46 @@ def main(page: ft.Page):
         d_q.update()
         page.update()
 
-    ditch_shape_dd = ft.Dropdown(label="Ditch Cross-Section Shape", options=[OptionClass("Triangular"), OptionClass("Trapezoidal")], value="Triangular", width=280, text_size=13, on_select=on_ditch_shape_change)
-    ditch_mode_dd = ft.Dropdown(label="Calculation Mode", options=[OptionClass("Calculate Discharge (Q) from Normal Depth (y)"), OptionClass("Calculate Normal Depth (y) from Discharge (Q)")], value="Calculate Discharge (Q) from Normal Depth (y)", width=420, text_size=13, on_select=on_ditch_mode_change)
+    ditch_shape_dd = ft.Dropdown(
+        label="Ditch Cross-Section Shape",
+        options=[OptionClass("Triangular"), OptionClass("Trapezoidal")],
+        value="Triangular",
+        width=280,
+        text_size=13,
+        on_select=on_ditch_shape_change
+    )
 
-    d_result_txt = ft.Text(value="Configure parameters above and click 'Run Ditch Analysis'.", size=15, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_800)
+    ditch_mode_dd = ft.Dropdown(
+        label="Calculation Mode",
+        options=[
+            OptionClass("Calculate Discharge (Q) from Normal Depth (y)"),
+            OptionClass("Calculate Normal Depth (y) from Discharge (Q)")
+        ],
+        value="Calculate Discharge (Q) from Normal Depth (y)",
+        width=420,
+        text_size=13,
+        on_select=on_ditch_mode_change
+    )
+
+    d_result_txt = ft.Text(
+        value="Configure parameters above and click 'Run Ditch Analysis'.",
+        size=15,
+        weight=ft.FontWeight.BOLD,
+        color=ft.Colors.BLUE_800
+    )
+    
     d_equation_txt = ft.Text(
         spans=[
-            ft.TextSpan("Reference: TxDOT Hydraulic Design Manual (Eq. 6-2 & 6-3)", style=ft.TextStyle(color=ft.Colors.BLUE_600, decoration=ft.TextDecoration.UNDERLINE), url="https://www.txdot.gov/manuals/des/hyd/chapter-6--hydraulic-principles.html#_74b76647-1934-40bc-b514-d98ef3d10cde"),
+            ft.TextSpan(
+                "Reference: TxDOT Hydraulic Design Manual (Eq. 6-2 & 6-3)",
+                style=ft.TextStyle(color=ft.Colors.BLUE_600, decoration=ft.TextDecoration.UNDERLINE),
+                url="https://www.txdot.gov/manuals/des/hyd/chapter-6--hydraulic-principles.html#_74b76647-1934-40bc-b514-d98ef3d10cde"
+            ),
             ft.TextSpan("\nManning's Eq: Q = (1.486 / n) * A * R^(2/3) * S^(1/2)")
-        ], size=11, italic=True, color=ft.Colors.GREY_600
+        ],
+        size=11,
+        italic=True,
+        color=ft.Colors.GREY_600
     )
 
     def on_run_ditch(e):
@@ -1371,15 +1411,22 @@ def main(page: ft.Page):
             if not d_z_left.value.strip(): raise ValueError("Left Side Slope field is empty.")
             if not d_z_right.value.strip(): raise ValueError("Right Side Slope field is empty.")
 
-            n, s, z_left, z_right = float(d_n.value), float(d_s.value), float(d_z_left.value), float(d_z_right.value)
+            n = float(d_n.value)
+            s = float(d_s.value)
+            z_left = float(d_z_left.value)
+            z_right = float(d_z_right.value)
+            
             b = float(d_b.value) if not d_b.disabled else 0.0
             shape = ditch_shape_dd.value
             is_calc_q = "Discharge (Q) from" in ditch_mode_dd.value
 
-            if is_calc_q and not d_y.value.strip(): raise ValueError("Normal Depth (y) field is empty.")
-            if not is_calc_q and not d_q.value.strip(): raise ValueError("Discharge (Q) field is empty.")
+            if is_calc_q and not d_y.value.strip():
+                raise ValueError("Normal Depth (y) field is empty.")
+            if not is_calc_q and not d_q.value.strip():
+                raise ValueError("Discharge (Q) field is empty.")
 
             res = calculate_ditch_hydraulics(n, s, shape, b, z_left, z_right, is_calc_q, d_y.value, d_q.value)
+
             y_val = res['val'] if res["mode"] == "y" else float(d_y.value)
             v = res['velocity']
             
@@ -1392,19 +1439,35 @@ def main(page: ft.Page):
 
             flow_type = get_flow_type(v, dm)
 
-            res_label = "Discharge (Q)" if res["mode"] == "Q" else "Normal Depth (y)"
-            unit_label = "cfs" if res["mode"] == "Q" else "ft"
-
-            d_result_txt.value = (
-                f"Results — {res_label}: {res['val']:.2f} {unit_label} | "
-                f"Flow Area: {res['area']:.2f} sq ft | Velocity: {res['velocity']:.2f} fps\n"
-                f"Hydraulic Radius (R): {res['radius']:.2f} ft | Flow Type: {flow_type}"
-            )
-        except ValueError as ve: d_result_txt.value = f"Input Error: {str(ve)}"
-        except Exception as ex: d_result_txt.value = f"Calculation Error: {str(ex)}"
+            if res["mode"] == "Q":
+                d_result_txt.value = (
+                    f"Results — Discharge (Q): {res['val']:.2f} cfs | "
+                    f"Flow Area: {res['area']:.2f} sq ft | "
+                    f"Velocity: {res['velocity']:.2f} fps\n"
+                    f"Hydraulic Radius (R): {res['radius']:.2f} ft | "
+                    f"Flow Type: {flow_type}"
+                )
+            else:
+                d_result_txt.value = (
+                    f"Results — Normal Depth (y): {res['val']:.2f} ft | "
+                    f"Flow Area: {res['area']:.2f} sq ft | "
+                    f"Velocity: {res['velocity']:.2f} fps\n"
+                    f"Hydraulic Radius (R): {res['radius']:.2f} ft | "
+                    f"Flow Type: {flow_type}"
+                )
+        except ValueError as ve:
+            d_result_txt.value = f"Input Error: {str(ve)}"
+        except Exception as ex:
+            d_result_txt.value = f"Calculation Error: {str(ex)}"
         page.update()
 
-    ditch_calc_btn = ft.Button("Run Ditch Analysis", icon=ft.Icons.CALCULATE, color=ft.Colors.WHITE, bgcolor=ft.Colors.INDIGO, on_click=on_run_ditch)
+    ditch_calc_btn = ft.Button(
+        "Run Ditch Analysis",
+        icon=ft.Icons.CALCULATE,
+        color=ft.Colors.WHITE,
+        bgcolor=ft.Colors.INDIGO,
+        on_click=on_run_ditch
+    )
 
     tab_ditch_content = ft.Container(
         padding=15,
@@ -1417,14 +1480,23 @@ def main(page: ft.Page):
             ft.Container(height=10),
             ditch_calc_btn,
             ft.Divider(),
-            d_result_txt, d_equation_txt
+            d_result_txt,
+            d_equation_txt
         ], spacing=15, scroll=ft.ScrollMode.AUTO)
     )
 
     p_n = ft.TextField(label="Manning's Roughness (n)", value="0.012", width=220, text_size=13)
     p_s = ft.TextField(label="Bed Slope (S) [ft/ft]", value="0.005", width=220, text_size=13)
+    
     pipe_sizes = [OptionClass(f'{i}"') for i in range(6, 66, 6)]
-    p_dia = ft.Dropdown(label="Pipe Diameter (D) [inches]", options=pipe_sizes, value='24"', width=220, text_size=13)
+    p_dia = ft.Dropdown(
+        label="Pipe Diameter (D) [inches]",
+        options=pipe_sizes,
+        value='24"',
+        width=220,
+        text_size=13
+    )
+    
     p_y = ft.TextField(label="Depth of Flow (y) [ft]", value="1.5", width=220, disabled=False, text_size=13)
     p_q = ft.TextField(label="Discharge (Q) [cfs]", value="20.0", width=220, disabled=True, text_size=13)
 
@@ -1436,51 +1508,112 @@ def main(page: ft.Page):
         p_q.update()
         page.update()
 
-    pipe_mode_dd = ft.Dropdown(label="Calculation Mode", options=[OptionClass("Calculate Discharge (Q) from Normal Depth (y)"), OptionClass("Calculate Normal Depth (y) from Discharge (Q)")], value="Calculate Discharge (Q) from Normal Depth (y)", width=420, text_size=13, on_select=on_pipe_mode_change)
+    pipe_mode_dd = ft.Dropdown(
+        label="Calculation Mode",
+        options=[
+            OptionClass("Calculate Discharge (Q) from Normal Depth (y)"),
+            OptionClass("Calculate Normal Depth (y) from Discharge (Q)")
+        ],
+        value="Calculate Discharge (Q) from Normal Depth (y)",
+        width=420,
+        text_size=13,
+        on_select=on_pipe_mode_change
+    )
 
-    p_result_txt = ft.Text(value="Configure parameters above and click 'Run Pipe Analysis'.", size=15, weight=ft.FontWeight.BOLD, color=ft.Colors.BLUE_800)
+    p_result_txt = ft.Text(
+        value="Configure parameters above and click 'Run Pipe Analysis'.",
+        size=15,
+        weight=ft.FontWeight.BOLD,
+        color=ft.Colors.BLUE_800
+    )
+    
     p_equation_txt = ft.Text(
         spans=[
-            ft.TextSpan("Reference: TxDOT Hydraulic Design Manual (Eq. 6-2 & 6-3)", style=ft.TextStyle(color=ft.Colors.BLUE_600, decoration=ft.TextDecoration.UNDERLINE), url="https://www.txdot.gov/manuals/des/hyd/chapter-6--hydraulic-principles.html#_74b76647-1934-40bc-b514-d98ef3d10cde"),
+            ft.TextSpan(
+                "Reference: TxDOT Hydraulic Design Manual (Eq. 6-2 & 6-3)",
+                style=ft.TextStyle(color=ft.Colors.BLUE_600, decoration=ft.TextDecoration.UNDERLINE),
+                url="https://www.txdot.gov/manuals/des/hyd/chapter-6--hydraulic-principles.html#_74b76647-1934-40bc-b514-d98ef3d10cde"
+            ),
             ft.TextSpan("\nManning's Eq: Q = (1.486 / n) * A * R^(2/3) * S^(1/2)")
-        ], size=11, italic=True, color=ft.Colors.GREY_600
+        ],
+        size=11,
+        italic=True,
+        color=ft.Colors.GREY_600
     )
 
     def on_run_pipe(e):
         try:
             if not p_n.value.strip(): raise ValueError("Manning's 'n' field is empty.")
             if not p_s.value.strip(): raise ValueError("Bed Slope 'S' field is empty.")
+            if not p_dia.value: raise ValueError("Please select a Pipe Diameter.")
 
-            n, s = float(p_n.value), float(p_s.value)
-            dia_in = float(p_dia.value.replace('"', ''))
+            n = float(p_n.value)
+            s = float(p_s.value)
             is_calc_q = "Discharge (Q) from" in pipe_mode_dd.value
 
-            if is_calc_q and not p_y.value.strip(): raise ValueError("Depth of Flow (y) field is empty.")
-            if not is_calc_q and not p_q.value.strip(): raise ValueError("Discharge (Q) field is empty.")
+            diameter_inches = float(p_dia.value.replace('"', ''))
+            diameter_ft = diameter_inches / 12.0
 
-            res = calculate_pipe_hydraulics(n, s, dia_in, is_calc_q, p_y.value, p_q.value)
+            if is_calc_q and not p_y.value.strip():
+                raise ValueError("Normal Depth (y) field is empty.")
+            if not is_calc_q and not p_q.value.strip():
+                raise ValueError("Discharge (Q) field is empty.")
+
+            res = calculate_pipe_hydraulics(n, s, diameter_ft, is_calc_q, p_y.value, p_q.value)
+
+            y_val = res['val'] if res["mode"] == "y" else float(p_y.value)
             v = res['velocity']
-            dm = res['area'] / (dia_in / 12.0) 
+
+            a_full = (math.pi * (diameter_ft ** 2)) / 4.0
+            r_full = diameter_ft / 4.0
+            q_full = (1.486 / n) * a_full * (r_full ** (2.0 / 3.0)) * math.sqrt(s)
+
+            if y_val >= diameter_ft:
+                dm = diameter_ft / 4.0
+            else:
+                cos_val = max(-1.0, min(1.0, 1.0 - (2.0 * y_val / diameter_ft)))
+                theta = 2.0 * math.acos(cos_val)
+                top_width = 2.0 * math.sqrt(max(0.0, y_val * (diameter_ft - y_val)))
+                dm = res['area'] / top_width if top_width > 0 else diameter_ft / 4.0
+
             flow_type = get_flow_type(v, dm)
 
-            res_label = "Discharge (Q)" if res["mode"] == "Q" else "Depth of Flow (y)"
-            unit_label = "cfs" if res["mode"] == "Q" else "ft"
-
-            p_result_txt.value = (
-                f"Results — {res_label}: {res['val']:.2f} {unit_label} | "
-                f"Flow Area: {res['area']:.2f} sq ft | Velocity: {res['velocity']:.2f} fps\n"
-                f"Hydraulic Radius (R): {res['radius']:.2f} ft | Flow Type: {flow_type}"
-            )
-        except ValueError as ve: p_result_txt.value = f"Input Error: {str(ve)}"
-        except Exception as ex: p_result_txt.value = f"Calculation Error: {str(ex)}"
+            if res["mode"] == "Q":
+                p_result_txt.value = (
+                    f"Results — Discharge (Q): {res['val']:.2f} cfs | "
+                    f"Flow Area: {res['area']:.2f} sq ft | "
+                    f"Velocity: {res['velocity']:.2f} fps\n"
+                    f"Pipe Filling: {res['filling']:.1f}% | "
+                    f"Full Flow Capacity (Q_full): {q_full:.2f} cfs | "
+                    f"Flow Type: {flow_type}"
+                )
+            else:
+                p_result_txt.value = (
+                    f"Results — Normal Depth (y): {res['val']:.2f} ft | "
+                    f"Flow Area: {res['area']:.2f} sq ft | "
+                    f"Velocity: {res['velocity']:.2f} fps\n"
+                    f"Pipe Filling: {res['filling']:.1f}% | "
+                    f"Full Flow Capacity (Q_full): {q_full:.2f} cfs | "
+                    f"Flow Type: {flow_type}"
+                )
+        except ValueError as ve:
+            p_result_txt.value = f"Input Error: {str(ve)}"
+        except Exception as ex:
+            p_result_txt.value = f"Calculation Error: {str(ex)}"
         page.update()
 
-    pipe_calc_btn = ft.Button("Run Pipe Analysis", icon=ft.Icons.CALCULATE, color=ft.Colors.WHITE, bgcolor=ft.Colors.INDIGO, on_click=on_run_pipe)
+    pipe_calc_btn = ft.Button(
+        "Run Pipe Analysis",
+        icon=ft.Icons.CALCULATE,
+        color=ft.Colors.WHITE,
+        bgcolor=ft.Colors.INDIGO,
+        on_click=on_run_pipe
+    )
 
     tab_pipe_content = ft.Container(
         padding=15,
         content=ft.Column([
-            ft.Text("Circular Pipe Analysis (TxDOT Standard)", size=16, weight=ft.FontWeight.BOLD),
+            ft.Text("Circular Drainage Pipe Flow Analysis (TxDOT Standard)", size=16, weight=ft.FontWeight.BOLD),
             ft.Divider(),
             pipe_mode_dd,
             ft.Row([p_n, p_s, p_dia], wrap=True),
@@ -1488,40 +1621,44 @@ def main(page: ft.Page):
             ft.Container(height=10),
             pipe_calc_btn,
             ft.Divider(),
-            p_result_txt, p_equation_txt
+            p_result_txt,
+            p_equation_txt
         ], spacing=15, scroll=ft.ScrollMode.AUTO)
     )
 
-    pipes_ditches_calc_view = ft.Container(
-        content=ft.Column([
-            ft.Text("Pipes & Ditches Analysis", size=22, weight=ft.FontWeight.BOLD),
-            ft.Divider(),
-            ft.Tabs(
-                length=1,  # Update this integer to match your total number of tabs
-                expand=True,
-                content=ft.Column(
+    pipes_ditches_tabs = ft.Tabs(
+        length=2,
+        expand=True,
+        content=ft.Column(
+            expand=True,
+            controls=[
+                ft.TabBar(
+                    tabs=[
+                        ft.Tab(label="Ditch Analysis"),
+                        ft.Tab(label="Pipe Analysis"),
+                    ]
+                ),
+                ft.TabBarView(
                     expand=True,
                     controls=[
-                        ft.TabBar(
-                            tabs=[
-                                ft.Tab(label="Open Channel Ditches"),
-                                ft.Tab(label="Circular Pipes"),
-                                # If you have additional tabs, add them here: ft.Tab(label="Tab Name")
-                            ]
-                        ),
-                        ft.TabBarView(
-                            expand=True,
-                            controls=[
-                                tab_ditch_content,
-                                # If you have additional tabs, place their content variables here in the exact same order
-                            ]
-                        )
+                        tab_ditch_content,
+                        tab_pipe_content
                     ]
                 )
-            ),
-           developer_footer()
+            ]
+        )
+    )
+
+    pipes_ditches_view = ft.Container(
+        content=ft.Column([
+            ft.Text("Pipes & Ditches Hydraulic Analysis", size=22, weight=ft.FontWeight.BOLD),
+            ft.Text("Calculations based on TxDOT Hydraulic Manual procedures and Manning's Equation.", size=13, color=ft.Colors.GREY_700),
+            ft.Divider(),
+            pipes_ditches_tabs,
+            developer_footer()
         ], expand=True),
-        padding=20, expand=True
+        padding=20,
+        expand=True
     )
 
     # ==============================================================================
@@ -1864,7 +2001,10 @@ def main(page: ft.Page):
     )
 
     # ==========================================
-    # CALCULATOR 8: TXDOT DRAINAGE STANDARDS VIEWER
+    # CALCULATOR 9: TXDOT DRAINAGE STANDARDS VIEWER
+    # ==========================================
+    # ==========================================
+    # CALCULATOR 9: TXDOT DRAINAGE STANDARDS VIEWER
     # ==========================================
     standards_map = {
         f"[{item.get('code', 'N/A')}] {item.get('title', 'Untitled')}": item 
@@ -1885,12 +2025,13 @@ def main(page: ft.Page):
     summary_text = ft.Text(default_item.get('summary', ''), size=13, selectable=True)
     status_text = ft.Text(f"Loaded details for {default_item.get('code', '')}" if default_key else "", size=12, italic=True)
 
+    # UPDATED: Use native 'url' and 'url_target' for direct browser navigation
     open_pdf_btn = ft.Button(
         content=ft.Row([ft.Icon(ft.Icons.PICTURE_AS_PDF), ft.Text("Open Standard PDF")], alignment=ft.MainAxisAlignment.CENTER),
         disabled=not bool(default_key),
         color=ft.Colors.WHITE,
         bgcolor=ft.Colors.BLUE_700,
-        data=default_item.get('url', '')
+        url=default_item.get('url', '')
     )
 
     def update_standard_details(e=None):
@@ -1905,7 +2046,8 @@ def main(page: ft.Page):
             summary_text.value = item.get('summary', 'No summary available.')
 
             open_pdf_btn.disabled = False
-            open_pdf_btn.data = item.get('url', '')
+            # UPDATED: Set button 'url' dynamically
+            open_pdf_btn.url = item.get('url', '')
             status_text.value = f"Loaded details for {item.get('code', '')}"
             status_text.color = ft.Colors.BLACK
         else:
@@ -1915,7 +2057,8 @@ def main(page: ft.Page):
             dgn_file_text.value = "DGN Reference: -"
             summary_text.value = ""
             open_pdf_btn.disabled = True
-            open_pdf_btn.data = None
+            # UPDATED: Clear button 'url'
+            open_pdf_btn.url = None
 
         code_title_text.update()
         category_text.update()
@@ -1967,15 +2110,8 @@ def main(page: ft.Page):
         on_change=filter_standards
     )
 
-    def on_open_pdf_clicked(e):
-        pdf_path = e.control.data
-        if pdf_path:
-            success, msg = open_pdf_in_system_viewer(pdf_path, e.page)
-            status_text.value = msg
-            status_text.color = ft.Colors.GREEN_700 if success else ft.Colors.RED_700
-            status_text.update()
-
-    open_pdf_btn.on_click = on_open_pdf_clicked
+    # REMOVED: on_open_pdf_clicked and open_pdf_in_system_viewer references.
+    # The button now opens the link directly via browser-native web navigation.
 
     txdot_left_panel = ft.Column(
         controls=[
