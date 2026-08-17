@@ -698,40 +698,40 @@ TXDOT_DRAINAGE_STANDARDS = [
         "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-FWA30-20.pdf"
     },
     {
-        "code": "CH-SW-0",
+        "code": "CH-PW-0",
         "category": "Headwalls",
         "title": "Cast-In-Place Headwalls with Straight Wings 0 Skew",
         "summary": "This standard details cast-in-place headwalls with straight wingwalls aligned at a 0-degree skew for pipe culverts. Minimum structural concrete thickness is 8 inches for walls and base slabs. Design engineers must evaluate headwater depths, channel constriction impacts, and downstream energy dissipation requirements. Connection details require dowelled footings, keyway joints, and secure pipe collar connections. Wingwalls must be designed as cantilever retaining walls for backfill soil pressures. Engineers should cross-reference CD-CH-SW-15 and CD-CH-FW-0 standards.",
         "constraints": "Straight wings | Skew: 0° | Min thickness: 8\" | Cantilever retaining wall design",
         "file_name": "CD-CH-SW0-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-SW0-20.pdf"
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-PW0-20.pdf"
     },
     {
-        "code": "CH-SW-15",
+        "code": "CH-PW-S",
         "category": "Headwalls",
-        "title": "Cast-In-Place Headwalls with Straight Wings 15 Skew",
+        "title": "Cast-In-Place Headwalls with Straight Wings Skew",
         "summary": "This standard provides engineering drawings for cast-in-place headwalls featuring straight wingwalls at a 15-degree skew. Minimum concrete thickness is specified at 8 inches. Engineers must examine skewed approach channel flow patterns, unequal soil pressures on wingwalls, and structural stability. Connection details mandate reinforced dowel connections, non-shrink grout packings, and positive pipe-to-headwall mechanical ties. Riprap protection must be detailed along the skewed bank interface. Designers should review CD-CH-SW-0 and CD-CH-SW-30 standards.",
         "constraints": "Straight wings | Skew: 15° | Min thickness: 8\" | Skewed soil pressure evaluation",
         "file_name": "CD-CH-SW15-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-SW15-20.pdf"
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-PWS-20.pdf"
     },
     {
-        "code": "CH-SW-30",
+        "code": "CH-PW-A-0",
         "category": "Headwalls",
-        "title": "Cast-In-Place Headwalls with Straight Wings 30 Skew",
+        "title": "Cast-In-Place Headwalls for Arche pipe 0 Skew",
         "summary": "This standard outlines cast-in-place headwalls with straight wingwalls set at a 30-degree skew. Structural concrete elements require a minimum thickness of 8 inches to handle acute angle stress distributions. Design engineers must review stream alignment, wingwall length requirements, and differential earth loading. Connection details require robust dowel reinforcement, non-shrink grout seals, and mechanical anchoring. Scour protection aprons must be extended across the transition. Engineers should cross-reference CD-CH-SW-15 and CD-CH-FW-30 standards.",
         "constraints": "Straight wings | Skew: 30° | Min thickness: 8\" | Acute angle stress distribution",
         "file_name": "CD-CH-SW30-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-SW30-20.pdf"
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-PWA0-20.pdf"
     },
     {
-        "code": "CH-DW",
+        "code": "CH-PW-A-S",
         "category": "Headwalls",
-        "title": "Cast-In-Place Headwalls Drop Wing Details",
+        "title": "Cast-In-Place Headwalls for Arche pipe Skew",
         "summary": "This standard specifies drop wingwall structural details for cast-in-place headwalls used in stepped ditch or sloping terrain culvert installations. Minimum structural concrete thickness is 8 inches. Engineers must evaluate drop height velocities, impact turbulence, and localized scour potential at the drop transition. Connection details require heavy dowelled construction joints tying the drop wing into the main headwall structure, along with positive cutoff walls. Riprap and slope paving must be detailed below the drop. Designers should review all CD-CH series headwall standards.",
         "constraints": "Drop wing configuration | Min thickness: 8\" | Velocity and scour protection",
         "file_name": "CD-CH-DW-20.dgn",
-        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-DW-20.pdf"
+        "url": "https://ftp.dot.state.tx.us/pub/txdot-info/cmd/cserve/standard/bridge/CD-CH-PWAS-20.pdf"
     },
     {
         "code": "BCS-20",
