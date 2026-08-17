@@ -1863,81 +1863,223 @@ def main(page: ft.Page):
     )
 
     # ==========================================
-    # TXDOT DRAINAGE STANDARDS VIEWER
+    # CALCULATOR 8: TXDOT DRAINAGE STANDARDS VIEWER
     # ==========================================
-    def build_standards_view():
-        standards_list = ft.ListView(expand=1, spacing=10, padding=20)
-        for std in TXDOT_DRAINAGE_STANDARDS:
-            card = ft.Card(
-                content=ft.Container(
-                    content=ft.Column([
-                        ft.Text(f"{std.get('code', 'N/A')} - {std.get('title', 'Unknown Title')}", weight=ft.FontWeight.BOLD, size=16),
-                        ft.Text(std.get('summary', 'No summary available.'), size=13, color=ft.Colors.GREY_700),
-                        ft.TextButton("Open Standard PDF", on_click=lambda e, url=std.get('url', ''): open_pdf_in_system_viewer(url))
-                    ]), padding=15
-                )
-            )
-            standards_list.controls.append(card)
-            
-        return ft.Container(
-            content=ft.Column([
-                ft.Text("TxDOT Drainage Standards Reference", size=22, weight=ft.FontWeight.BOLD),
-                ft.Divider(),
-                standards_list,
-                developer_footer()
-            ], expand=True),
-            expand=True
-        )
+    standards_map = {
+        f"[{item.get('code', 'N/A')}] {item.get('title', 'Untitled')}": item 
+        for item in TXDOT_DRAINAGE_STANDARDS
+    }
 
-    txdot_standards_view = build_standards_view()
+    default_key = list(standards_map.keys())[0] if standards_map else None
+    default_item = standards_map.get(default_key, {}) if default_key else {}
 
-    # ==========================================
-    # MAIN APPLICATION NAVIGATION LAYOUT
-    # ==========================================
-    all_views = [
-        slope_calc_view, middle_calc_view, tc_calc_view, drainage_area_calc_view, 
-        rational_calc_view, scs_calc_view, pipes_ditches_calc_view, 
-        alignment_calc_view, txdot_standards_view
-    ]
-    
-    def change_view(e):
-        idx = e.control.selected_index
-        for i, view in enumerate(all_views):
-            view.visible = (i == idx)
-        page.update()
+    code_title_text = ft.Text(
+        f"[{default_item.get('code', 'N/A')}] {default_item.get('title', '')}" if default_key else "Select a standard to view details.", 
+        size=16, 
+        weight=ft.FontWeight.BOLD
+    )
+    category_text = ft.Text(f"Category: {default_item.get('category', '-')}", weight=ft.FontWeight.W_500, color=ft.Colors.BLUE_700)
+    constraints_text = ft.Text(f"Constraints: {default_item.get('constraints', '-')}", italic=True, size=13)
+    dgn_file_text = ft.Text(f"DGN Reference: {default_item.get('file_name', '-')}", size=12, color=ft.Colors.GREY_700)
+    summary_text = ft.Text(default_item.get('summary', ''), size=13, selectable=True)
+    status_text = ft.Text(f"Loaded details for {default_item.get('code', '')}" if default_key else "", size=12, italic=True)
+
+    open_pdf_btn = ft.Button(
+        content=ft.Row([ft.Icon(ft.Icons.PICTURE_AS_PDF), ft.Text("Open Standard PDF")], alignment=ft.MainAxisAlignment.CENTER),
+        disabled=not bool(default_key),
+        color=ft.Colors.WHITE,
+        bgcolor=ft.Colors.BLUE_700,
+        data=default_item.get('url', '')
+    )
+
+    def update_standard_details(e=None):
+        selected_key = standard_dropdown.value
         
-    nav_rail = ft.NavigationRail(
+        if selected_key and selected_key in standards_map:
+            item = standards_map[selected_key]
+            code_title_text.value = f"[{item.get('code', 'N/A')}] {item.get('title', '')}"
+            category_text.value = f"Category: {item.get('category', 'N/A')}"
+            constraints_text.value = f"Constraints: {item.get('constraints', 'N/A')}"
+            dgn_file_text.value = f"DGN Reference: {item.get('file_name', 'N/A')}"
+            summary_text.value = item.get('summary', 'No summary available.')
+
+            open_pdf_btn.disabled = False
+            open_pdf_btn.data = item.get('url', '')
+            status_text.value = f"Loaded details for {item.get('code', '')}"
+            status_text.color = ft.Colors.BLACK
+        else:
+            code_title_text.value = "Select a standard to view details."
+            category_text.value = "Category: -"
+            constraints_text.value = "Constraints: -"
+            dgn_file_text.value = "DGN Reference: -"
+            summary_text.value = ""
+            open_pdf_btn.disabled = True
+            open_pdf_btn.data = None
+
+        code_title_text.update()
+        category_text.update()
+        constraints_text.update()
+        dgn_file_text.update()
+        summary_text.update()
+        open_pdf_btn.update()
+        status_text.update()
+
+    standard_dropdown = ft.Dropdown(
+        label="Select Standard Drawing",
+        width=360,
+        options=[ft.dropdown.Option(k) for k in standards_map.keys()],
+        value=default_key,
+        on_select=update_standard_details
+    )
+
+    def filter_standards(e):
+        query = search_box.value.lower().strip()
+        filtered_options = []
+        
+        for key, item in standards_map.items():
+            code = str(item.get("code", "")).lower()
+            title = str(item.get("title", "")).lower()
+            category = str(item.get("category", "")).lower()
+
+            if not query or query in code or query in title or query in category:
+                filtered_options.append(ft.dropdown.Option(key))
+                
+        standard_dropdown.options = filtered_options
+        
+        if filtered_options:
+            standard_dropdown.value = filtered_options[0].key
+        else:
+            standard_dropdown.value = None
+
+        standard_dropdown.update()
+        update_standard_details()
+
+        status_text.value = f"Filtered {len(filtered_options)} matching standards."
+        status_text.color = ft.Colors.GREY_700
+        status_text.update()
+
+    search_box = ft.TextField(
+        label="Search Standards",
+        hint_text="Type code, title, or category...",
+        prefix_icon=ft.Icons.SEARCH,
+        width=360,
+        on_change=filter_standards
+    )
+
+    def on_open_pdf_clicked(e):
+        pdf_path = e.control.data
+        if pdf_path:
+            success, msg = open_pdf_in_system_viewer(pdf_path)
+            status_text.value = msg
+            status_text.color = ft.Colors.GREEN_700 if success else ft.Colors.RED_700
+            status_text.update()
+
+    open_pdf_btn.on_click = on_open_pdf_clicked
+
+    txdot_left_panel = ft.Column(
+        controls=[
+            ft.Text("TxDOT Standards Index", size=18, weight=ft.FontWeight.BOLD),
+            ft.Divider(),
+            search_box,
+            standard_dropdown,
+        ],
+        width=360,
+        spacing=12
+    )
+
+    txdot_right_panel = ft.Card(
+        elevation=2,
+        content=ft.Container(
+            padding=20,
+            width=620,
+            content=ft.Column(
+                controls=[
+                    ft.Row([
+                        ft.Icon(ft.Icons.MENU_BOOK, color=ft.Colors.BLUE_600),
+                        ft.Text("Standard Details", size=18, weight=ft.FontWeight.BOLD)
+                    ]),
+                    ft.Divider(),
+                    code_title_text,
+                    category_text,
+                    constraints_text,
+                    dgn_file_text,
+                    ft.Divider(),
+                    ft.Text("Summary:", weight=ft.FontWeight.BOLD, size=15),
+                    ft.Container(
+                        content=ft.Column([summary_text], scroll=ft.ScrollMode.AUTO),
+                        height=260,
+                        padding=5,
+                        border=ft.Border.all(1, ft.Colors.GREY_300),
+                        border_radius=6,
+                    ),
+                    ft.Divider(),
+                    open_pdf_btn,
+                    status_text
+                ],
+                spacing=8
+            )
+        )
+    )
+
+    txdot_calc_view = ft.Container(
+        content=ft.Column([
+            ft.Row(
+                controls=[txdot_left_panel, ft.VerticalDivider(width=20), txdot_right_panel],
+                alignment=ft.MainAxisAlignment.START,
+                vertical_alignment=ft.CrossAxisAlignment.START,
+                expand=True
+            ),
+            developer_footer()
+        ], expand=True, scroll=ft.ScrollMode.AUTO),
+        padding=20,
+        expand=True
+    )
+
+    # ==========================================
+    # NAVIGATION & LAYOUT
+    # ==========================================
+    content_area = ft.Container(content=slope_calc_view, expand=True)
+    views = [
+        slope_calc_view,
+        middle_calc_view,
+        tc_calc_view,
+        drainage_area_calc_view,
+        rational_calc_view,
+        scs_calc_view,
+        pipes_ditches_calc_view,
+        alignment_calc_view,
+        txdot_calc_view,
+    ]
+
+    def nav_change(e):
+        content_area.content = views[e.control.selected_index]
+        page.update()
+
+    sidebar = ft.NavigationRail(
         selected_index=0,
         label_type=ft.NavigationRailLabelType.ALL,
         min_width=100,
-        min_extended_width=120,
-        on_change=change_view,
+        min_extended_width=180,
         destinations=[
-            ft.NavigationRailDestination(icon=ft.Icons.TRENDING_UP, label="Slope"),
-            ft.NavigationRailDestination(icon=ft.Icons.HEIGHT, label="Middle Elev"),
-            ft.NavigationRailDestination(icon=ft.Icons.TIMER, label="Time of Conc"),
-            ft.NavigationRailDestination(icon=ft.Icons.MAP, label="Drainage Area"),
-            ft.NavigationRailDestination(icon=ft.Icons.WATER_DROP, label="Rational (Q)"),
-            ft.NavigationRailDestination(icon=ft.Icons.STORM, label="SCS Peak Flow"),
-            ft.NavigationRailDestination(icon=ft.Icons.ARCHITECTURE, label="Pipes/Ditches"),
+            ft.NavigationRailDestination(icon=ft.Icons.ANALYTICS, label="Standard Slope"),
+            ft.NavigationRailDestination(icon=ft.Icons.ACCOUNT_TREE, label="Middle Elev"),
+            ft.NavigationRailDestination(icon=ft.Icons.ACCESS_TIME, label="Time of Concentration"),
+            ft.NavigationRailDestination(icon=ft.Icons.SQUARE_FOOT, label="Drainage Area"),
+            ft.NavigationRailDestination(icon=ft.Icons.WATER, label="Rational Q"),
+            ft.NavigationRailDestination(icon=ft.Icons.LANDSCAPE, label="SCS Qp"),
+            ft.NavigationRailDestination(icon=ft.Icons.WATERFALL_CHART, label="Pipes & Ditches"),
             ft.NavigationRailDestination(icon=ft.Icons.ADD_ROAD, label="Alignment"),
-            ft.NavigationRailDestination(icon=ft.Icons.PICTURE_AS_PDF, label="Standards"),
-        ]
+            ft.NavigationRailDestination(icon=ft.Icons.MENU_BOOK, label="TxDOT Standards"),
+        ],
+        on_change=nav_change,
     )
-
-    for i, view in enumerate(all_views):
-        view.visible = (i == 0)
 
     page.add(
-        ft.Row(
-            [
-                nav_rail,
-                ft.VerticalDivider(width=1),
-                ft.Column(all_views, expand=True)
-            ],
-            expand=True
-        )
+        ft.Row([
+            sidebar,
+            ft.VerticalDivider(width=1),
+            content_area
+        ], expand=True)
     )
-
 if __name__ == "__main__":
     ft.run(main)
