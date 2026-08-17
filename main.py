@@ -2110,7 +2110,7 @@ def main(page: ft.Page):
         on_change=filter_standards
     )
 
-    # REMOVED: on_open_pdf_clicked and open_pdf_in_system_viewer references.
+    
     # The button now opens the link directly via browser-native web navigation.
 
     txdot_left_panel = ft.Column(
