@@ -62,7 +62,7 @@ def open_pdf_in_system_viewer(path: str,  page: ft.Page):
     try:
         if path.startswith("http://") or path.startswith("https://"):
             #webbrowser.open(path, new=2)
-            page.launch_url(path)
+            page.launch_url(path, web_window_name="_blank")
             return True, "Opening standard PDF in default browser..."
 
         if not os.path.exists(path):
