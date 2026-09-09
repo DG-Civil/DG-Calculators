@@ -20,6 +20,7 @@ import csv
 import flet as ft
 import io
 
+from Culvert_analysis import get_culvert_analysis_view
 # Chart imports for Drainage Area Calculator with fallback across Flet versions
 try:
     import flet_charts as fch
@@ -1625,9 +1626,12 @@ def main(page: ft.Page):
             p_equation_txt
         ], spacing=15, scroll=ft.ScrollMode.AUTO)
     )
+    
+    # Instantiate the Culvert Analysis view
+    tab_culvert_content = get_culvert_analysis_view(page)
 
     pipes_ditches_tabs = ft.Tabs(
-        length=2,
+        length=3,
         expand=True,
         content=ft.Column(
             expand=True,
@@ -1636,13 +1640,15 @@ def main(page: ft.Page):
                     tabs=[
                         ft.Tab(label="Ditch Analysis"),
                         ft.Tab(label="Pipe Analysis"),
+                        ft.Tab(label="Culvert Analysis"),
                     ]
                 ),
                 ft.TabBarView(
                     expand=True,
                     controls=[
                         tab_ditch_content,
-                        tab_pipe_content
+                        tab_pipe_content,
+                        tab_culvert_content
                     ]
                 )
             ]
@@ -1651,8 +1657,8 @@ def main(page: ft.Page):
 
     pipes_ditches_view = ft.Container(
         content=ft.Column([
-            ft.Text("Pipes & Ditches Hydraulic Analysis", size=22, weight=ft.FontWeight.BOLD),
-            ft.Text("Calculations based on TxDOT Hydraulic Manual procedures and Manning's Equation.", size=13, color=ft.Colors.GREY_700),
+            ft.Text("Pipes & Ditches & Culverts Hydraulic Analysis", size=22, weight=ft.FontWeight.BOLD),
+            ft.Text("Calculations based on TxDOT Hydraulic Manual procedures and FHWA HDS-5 standards.", size=13, color=ft.Colors.GREY_700),
             ft.Divider(),
             pipes_ditches_tabs,
             developer_footer()
@@ -1660,6 +1666,42 @@ def main(page: ft.Page):
         padding=20,
         expand=True
     )
+
+
+    # pipes_ditches_tabs = ft.Tabs(
+    #     length=2,
+    #     expand=True,
+    #     content=ft.Column(
+    #         expand=True,
+    #         controls=[
+    #             ft.TabBar(
+    #                 tabs=[
+    #                     ft.Tab(label="Ditch Analysis"),
+    #                     ft.Tab(label="Pipe Analysis"),
+    #                 ]
+    #             ),
+    #             ft.TabBarView(
+    #                 expand=True,
+    #                 controls=[
+    #                     tab_ditch_content,
+    #                     tab_pipe_content
+    #                 ]
+    #             )
+    #         ]
+    #     )
+    # )
+
+    # pipes_ditches_view = ft.Container(
+    #     content=ft.Column([
+    #         ft.Text("Pipes & Ditches Hydraulic Analysis", size=22, weight=ft.FontWeight.BOLD),
+    #         ft.Text("Calculations based on TxDOT Hydraulic Manual procedures and Manning's Equation.", size=13, color=ft.Colors.GREY_700),
+    #         ft.Divider(),
+    #         pipes_ditches_tabs,
+    #         developer_footer()
+    #     ], expand=True),
+    #     padding=20,
+    #     expand=True
+    # )
 
     # ==============================================================================
     # CALCULATOR 8: TXDOT MULTI-CURVE ALIGNMENT MODELER (ROADWAY)
