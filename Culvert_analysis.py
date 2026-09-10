@@ -5,7 +5,6 @@ Culvert Analysis Module (FHWA HDS-5)
 
 import flet as ft
 import math
-import os
 
 FHWA_TABLE = {
     "Box - TxDOT 0° Wingwalls (Square Edge)": {"K": 0.061, "M": 0.75, "c": 0.0423, "Y": 0.82, "ke": 0.5, "shape": "box"},
@@ -17,12 +16,7 @@ FHWA_TABLE = {
 }
 
 def get_culvert_analysis_view(page: ft.Page):
-    
-    # 1. Define FilePicker and add it to the page overlay
-    file_picker = ft.FilePicker()
-    page.overlay.append(file_picker)
-    page.update()
-    
+
     def update_dimensions(e):
         shape = FHWA_TABLE[dd_culvert_type.value]["shape"]
         if shape == "circular":
@@ -153,30 +147,6 @@ def get_culvert_analysis_view(page: ft.Page):
             calc_details.value = str(ex)
         page.update()
 
-    async def download_pdf(e):
-        try:
-            asset_path = os.path.join("assets", "HDS5_Analysis_Reference.pdf")
-            if os.path.exists(asset_path):
-                with open(asset_path, "rb") as f:
-                    pdf_bytes = f.read()
-                # 2. Use the persistent file_picker instance bound to page.overlay
-                saved_path = await file_picker.save_file(
-                    file_name="HDS5_Analysis_Reference.pdf",
-                    src_bytes=pdf_bytes
-                )
-                if saved_path:
-                    page.snack_bar = ft.SnackBar(ft.Text("✅ PDF reference downloaded successfully!"))
-                    page.snack_bar.open = True
-                    page.update()
-            else:
-                page.snack_bar = ft.SnackBar(ft.Text("⚠️ Reference PDF file not found in assets folder."))
-                page.snack_bar.open = True
-                page.update()
-        except Exception as ex:
-            page.snack_bar = ft.SnackBar(ft.Text(f"⚠️ Error saving file: {ex}"))
-            page.snack_bar.open = True
-            page.update()
-
     return ft.Container(
         padding=15,
         content=ft.Column([
@@ -188,7 +158,13 @@ def get_culvert_analysis_view(page: ft.Page):
             ft.Row([txt_length, txt_slope, txt_n, txt_tw], wrap=True),
             ft.Row([
                 ft.ElevatedButton("Calculate Hydraulics", on_click=calculate_hydraulics, bgcolor="blue700", color="white"),
-                ft.ElevatedButton("📄 Download PDF Reference", on_click=download_pdf)
+                
+                # REPLACED FilePicker logic with direct web linking
+                ft.ElevatedButton(
+                    "📄 Download PDF Reference", 
+                    url="HDS5_Analysis_Reference.pdf", 
+                    url_target="_blank"
+                )
             ]),
             ft.Divider(),
             result_text,
