@@ -1657,7 +1657,7 @@ def main(page: ft.Page):
 
     pipes_ditches_view = ft.Container(
         content=ft.Column([
-            ft.Text("Pipes & Ditches & Culverts Hydraulic Analysis", size=22, weight=ft.FontWeight.BOLD),
+            ft.Text("Pipes , Ditches & Culverts Hydraulic Analysis", size=22, weight=ft.FontWeight.BOLD),
             ft.Text("Calculations based on TxDOT Hydraulic Manual procedures and FHWA HDS-5 standards.", size=13, color=ft.Colors.GREY_700),
             ft.Divider(),
             pipes_ditches_tabs,
