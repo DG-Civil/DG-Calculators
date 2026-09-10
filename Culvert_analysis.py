@@ -162,8 +162,8 @@ def get_culvert_analysis_view(page: ft.Page):
                 # REPLACED FilePicker logic with direct web linking
                 ft.ElevatedButton(
                     "📄 Download PDF Reference", 
-                    url="HDS5_Analysis_Reference.pdf", 
-                    url_target="_blank"
+                    url="HDS5_Analysis_Reference.pdf" 
+                    #url_target="_blank"
                 )
             ]),
             ft.Divider(),
